@@ -26,7 +26,11 @@ if "current_result" not in st.session_state:
     st.session_state.current_result = None
 if "current_log_id" not in st.session_state:
     st.session_state.current_log_id = None
-
+if "approval_message" not in st.session_state:
+    st.session_state.approval_message = None
+if  st.session_state.approval_message:
+    st.success(st.session_state.approval_message)
+    st.session_state.approval_message = None
 # ---------- Sidebar ----------
 with st.sidebar:
     st.title("⚙️ About")
@@ -166,9 +170,11 @@ if st.session_state.current_result:
     col_approve, col_reject = st.columns(2)
     with col_approve:
         if st.button("✅ Approve", use_container_width=True):
-            update_approval_status(st.session_state.current_log_id, "approved", notes)
-            st.success("Marked as approved and logged.")
+           update_approval_status(st.session_state.current_log_id, "approved", notes)
+           st.session_state.approval_message = "Marked as approved and logged."
+           st.rerun()
     with col_reject:
         if st.button("❌ Reject", use_container_width=True):
-            update_approval_status(st.session_state.current_log_id, "rejected", notes)
-            st.warning("Marked as rejected and logged.")
+    update_approval_status(st.session_state.current_log_id, "rejected", notes)
+    st.session_state.approval_message = "Marked as rejected and logged."
+    st.rerun()
