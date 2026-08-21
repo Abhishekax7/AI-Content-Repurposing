@@ -28,9 +28,7 @@ if "current_log_id" not in st.session_state:
     st.session_state.current_log_id = None
 if "approval_message" not in st.session_state:
     st.session_state.approval_message = None
-if  st.session_state.approval_message:
-    st.success(st.session_state.approval_message)
-    st.session_state.approval_message = None
+
 # ---------- Sidebar ----------
 with st.sidebar:
     st.title("⚙️ About")
@@ -188,3 +186,6 @@ if st.session_state.current_result:
             )
             st.session_state.approval_message = "Marked as rejected and logged."
             st.rerun()
+    if  st.session_state.approval_message:
+    st.success(st.session_state.approval_message)
+    st.session_state.approval_message = None
