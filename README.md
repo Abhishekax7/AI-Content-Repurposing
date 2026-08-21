@@ -6,7 +6,7 @@ marketing assets in one structured AI call: a LinkedIn post, a short
 video/Reel script, a summary, campaign ideas, hooks, CTAs, and email
 subject lines.
 
-**🔗 Live demo:** _add your Streamlit Cloud link here after deployment_
+**🔗 Live demo:** [Try the AI Content Repurposing App] (https://ai-content-repurposing-7ngtyfdie2jrysomtqemlg.streamlit.app)
 
 ---
 
