@@ -163,27 +163,28 @@ if st.session_state.current_result:
             for subject in result["email_subject_lines"]:
                 st.markdown(f"- {subject}")
 
-    # ---------- Approval workflow ----------
+       # ---------- Approval workflow ----------
     st.divider()
     st.markdown("#### Review this generation")
     notes = st.text_area("Revision notes (optional)", key="revision_notes")
     col_approve, col_reject = st.columns(2)
-    with col_approve:
-    if st.button("✅ Approve", use_container_width=True):
-        update_approval_status(
-            st.session_state.current_log_id,
-            "approved",
-            notes
-        )
-        st.session_state.approval_message = "Marked as approved and logged."
-        st.rerun()
 
-with col_reject:
-    if st.button("❌ Reject", use_container_width=True):
-        update_approval_status(
-            st.session_state.current_log_id,
-            "rejected",
-            notes
-        )
-        st.session_state.approval_message = "Marked as rejected and logged."
-        st.rerun()
+    with col_approve:
+        if st.button("✅ Approve", use_container_width=True):
+            update_approval_status(
+                st.session_state.current_log_id,
+                "approved",
+                notes
+            )
+            st.session_state.approval_message = "Marked as approved and logged."
+            st.rerun()
+
+    with col_reject:
+        if st.button("❌ Reject", use_container_width=True):
+            update_approval_status(
+                st.session_state.current_log_id,
+                "rejected",
+                notes
+            )
+            st.session_state.approval_message = "Marked as rejected and logged."
+            st.rerun()
